@@ -9,15 +9,19 @@ int main() {
     tree.insert(1);
     tree.insert(2);
     tree.insert(4);
+    tree.insert(5);
 
     if(tree.search(3)){
         cout<<"Value is in tree"<<endl;
     }else{
         cout<<"Value not found"<<endl;
     }
-
-    tree.helperinorder();
-    tree.postorderhelper();
-    tree.helperpreorder();
+    tree.printHelper();
+//    tree.helperinorder();
+//    tree.postorderhelper();
+//    tree.helperpreorder();
+    cout<<"Deleted node:"<<tree.deleteNode(5);
+//    tree.helperinorder();
+    tree.printHelper();
     return 0;
 }

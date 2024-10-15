@@ -31,6 +31,9 @@ public:
     void postorderhelper();
     void preorder(TreeNode*);
     void helperpreorder();
+    bool deleteNode(int key);
+    void printHelper();
+    void printTree(TreeNode* root, int space);
 };
 
 

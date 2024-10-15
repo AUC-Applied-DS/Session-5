@@ -122,3 +122,62 @@ void BinaryTree::Postordertraversal(TreeNode* root) {
 void BinaryTree::postorderhelper() {
     Postordertraversal(root);
 }
+
+bool BinaryTree::deleteNode(int key){
+    if (root== nullptr) return false;    //if empty tree
+
+    TreeNode* t = root;
+    if(search(key)){               //check the presence  of the value
+        while (t != nullptr && t->data != key) {
+            if (key < t->data) {
+                t = t->left;
+            }
+            else if (key > t->data) {
+                t = t->right;
+            }
+        }
+        if(t->left == nullptr && t->right == nullptr){   //this is a leaf node
+            cout<<"This is leaf node target"<<endl;
+            delete t;
+            return true;
+        }
+        else if (t->left == nullptr){
+            TreeNode* temp = t;
+            t = t->right;
+            delete temp;
+        }else if (t->right == nullptr){
+            TreeNode* temp = t;
+            t = t->left;
+            delete temp;
+        }else{
+            TreeNode* temp = t;
+            t = t->right;
+            delete temp;
+        }
+    }
+    return false;
+
+}
+
+void BinaryTree::printTree(TreeNode* root, int space) {
+    if (root == nullptr) {
+        return;
+    }
+
+    space += 10;
+
+    printTree(root->right, space);
+
+    cout << endl;
+    for (int i = 10; i < space; i++) {
+        cout << " ";
+    }
+    cout << root->data << "\n";
+
+    // Process left child
+    printTree(root->left, space);
+}
+
+void BinaryTree::printHelper() {
+    printTree(root, 0);
+}
